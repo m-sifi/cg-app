@@ -12,6 +12,7 @@ interface ListItemLinkProps {
   className?: string
   children?: any
   title: string
+  href: string
 }
 
 interface NavListProps {
