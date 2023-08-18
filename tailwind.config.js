@@ -7,6 +7,7 @@ module.exports = {
   theme: {
     extend: {
       gridTemplateColumns: {
+        content: '600px 1fr',
         nav: '200px minmax(1000px, 1fr)',
       },
       keyframes: {
