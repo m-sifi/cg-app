@@ -5,6 +5,7 @@ import { forwardRef } from 'react'
 interface NavListItemProps {
   title: string
   children?: any
+  className?: string
 }
 
 interface ListItemLinkProps {
@@ -34,10 +35,12 @@ const NavList = ({ children }: NavListProps) => {
 }
 
 // eslint-disable-next-line react/display-name
-const NavListItem = ({ title, children }: NavListItemProps) => {
+const NavListItem = ({ title, children, className }: NavListItemProps) => {
   return (
     <RadixNavigationMenu.Item>
-      <RadixNavigationMenu.Trigger className='select-none rounded-md px-2 py-3 text-sm font-semibold leading-none outline-none transition-colors delay-100 hover:bg-gray-200'>
+      <RadixNavigationMenu.Trigger
+        className={`select-none rounded-md px-2 py-3 text-sm font-semibold leading-none outline-none transition-colors delay-100 hover:bg-gray-200 ${className}`}
+      >
         {title}
       </RadixNavigationMenu.Trigger>
       <RadixNavigationMenu.Content className='absolute left-0 top-0 w-full sm:w-auto'>
@@ -71,7 +74,7 @@ function NavigationMenu() {
       <RadixNavigationMenu.List className='m-0 grid w-screen list-none grid-cols-nav justify-center gap-2 rounded-md bg-white p-2 shadow-md'>
         <Logo />
         <div className='absolute top-0 flex w-screen justify-center p-1'>
-          <NavListItem title={'Vectors'}>
+          <NavListItem title={'Vectors'} className='hidden'>
             <NavList>
               <ListItemLink title='Dot Product' href='/primitives/docs/overview/introduction'>
                 Build high-quality, accessible design systems and web apps.
