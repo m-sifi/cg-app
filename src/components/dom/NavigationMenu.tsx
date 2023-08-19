@@ -87,7 +87,7 @@ function NavigationMenu() {
           </NavListItem>
           <NavListItem title={'Matrices'}>
             <NavList>
-              <ListItemLink title='Translation' href='/primitives/docs/overview/introduction'>
+              <ListItemLink title='Translation' href='/matrices/translation'>
                 Build high-quality, accessible design systems and web apps.
               </ListItemLink>
               <ListItemLink title='Scaling' href='/primitives/docs/overview/getting-started'>
@@ -145,7 +145,7 @@ function NavigationMenu() {
         </div>
       </RadixNavigationMenu.List>
 
-      <div className='absolute left-0 top-full flex w-full justify-center' style={{ perspective: '2000px' }}>
+      <div className='absolute left-0 top-11 flex w-full justify-center' style={{ perspective: '2000px' }}>
         {/* <RadixNavigationMenu.Viewport className='relative mt-3 w-full origin-center overflow-hidden rounded-md bg-white transition-all h-radix-navigation-menu-viewport' /> */}
         <RadixNavigationMenu.Viewport className='relative mt-[4px] h-[var(--radix-navigation-menu-viewport-height)] w-full origin-[top_center] overflow-hidden rounded-[6px] bg-white transition-[width,_height] duration-300 radix-state-closed:animate-scaleOut radix-state-open:animate-scaleIn sm:w-[var(--radix-navigation-menu-viewport-width)]' />
       </div>

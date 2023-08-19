@@ -11,6 +11,7 @@ const Layout = ({ children }) => {
 
   return (
     <div
+      className='flex flex-row'
       ref={ref}
       style={{
         position: 'relative',

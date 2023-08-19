@@ -23,6 +23,9 @@ dependencies:
   '@types/three':
     specifier: ^0.155.0
     version: 0.155.0
+  better-react-mathjax:
+    specifier: ^2.0.2
+    version: 2.0.2(react@18.2.0)
   glsl-random:
     specifier: ^0.0.5
     version: 0.0.5
@@ -35,6 +38,9 @@ dependencies:
   next:
     specifier: ^13.4.13
     version: 13.4.16(@babel/core@7.22.10)(react-dom@18.2.0)(react@18.2.0)
+  r3f-perf:
+    specifier: ^7.1.2
+    version: 7.1.2(@react-three/fiber@8.13.6)(@types/three@0.155.0)(react-dom@18.2.0)(react@18.2.0)(three@0.154.0)
   react:
     specifier: ^18.2.0
     version: 18.2.0
@@ -53,6 +59,9 @@ dependencies:
   tunnel-rat:
     specifier: ^0.1.2
     version: 0.1.2(@types/react@18.2.20)(react@18.2.0)
+  zustand:
+    specifier: ^4.4.1
+    version: 4.4.1(@types/react@18.2.20)(react@18.2.0)
 
 devDependencies:
   '@next/bundle-analyzer':
@@ -2418,6 +2427,18 @@ packages:
       react: 18.2.0
     dev: false
 
+  /@utsubo/events@0.1.7(react@18.2.0):
+    resolution: {integrity: sha512-WB/GEj/0h27Bz8rJ0+CBtNz5mLT79ne1OjB7PUM4n0qLBqEDwm6yBzZC3j6tasHjlBPJDYZiBVIA1glaMlgZ5g==}
+    peerDependencies:
+      react: '>=16.8.0'
+    peerDependenciesMeta:
+      react:
+        optional: true
+    dependencies:
+      eventemitter3: 4.0.7
+      react: 18.2.0
+    dev: false
+
   /@webassemblyjs/ast@1.11.6:
     resolution: {integrity: sha512-IN1xI7PwOvLPgjcf180gC1bqn3q/QaOCwYUahIOhbYUu8KA/3tw2RT/T0Gidi1l7Hhj5D/INhJxiICObqpMu4Q==}
     dependencies:
@@ -2793,6 +2814,15 @@ packages:
   /balanced-match@1.0.2:
     resolution: {integrity: sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==}
 
+  /better-react-mathjax@2.0.2(react@18.2.0):
+    resolution: {integrity: sha512-GSU/c+LhnMVClkduWpO7fr9Ac2KMOxWs/ePwdFgpffidK3Zg9Vyd3scO6XZbd2QgMUcKnpjEG6hE1sM/EFekSQ==}
+    peerDependencies:
+      react: '>=16.8'
+    dependencies:
+      mathjax-full: 3.2.2
+      react: 18.2.0
+    dev: false
+
   /bidi-js@1.0.3:
     resolution: {integrity: sha512-RKshQI1R3YQ+n9YJz2QQ147P66ELpa1FQEg20Dk8oW9t2KgLbpDLLp9aGZ7y8WHSshDknG0bknqGw5/tyCs5tw==}
     dependencies:
@@ -2980,6 +3010,11 @@ packages:
     resolution: {integrity: sha512-QrWXB+ZQSVPmIWIhtEO9H+gwHaMGYiF5ChvoJ+K9ZGHG/sVsa6yiesAD1GC/x46sET00Xlwo1u49RVVVzvcSkw==}
     engines: {node: '>= 10'}
     dev: true
+
+  /commander@9.2.0:
+    resolution: {integrity: sha512-e2i4wANQiSXgnrBlIatyHtP1odfUp0BbV5Y5nEGbxtIrStkEOAAzCUirvLBNXHLr7kwLvJl6V+4V3XV9x7Wd9w==}
+    engines: {node: ^12.20.0 || >=14}
+    dev: false
 
   /common-tags@1.8.2:
     resolution: {integrity: sha512-gk/Z852D2Wtb//0I+kRFNKKE9dIIVirjoqPoA1wJU+XePVXZfGeBpk45+A1rKO4Q43prqWBNY/MiIeRLbPWUaA==}
@@ -3548,6 +3583,11 @@ packages:
       - supports-color
     dev: true
 
+  /esm@3.2.25:
+    resolution: {integrity: sha512-U1suiZ2oDVWv4zPO56S0NcR5QriEahGtdN2OR6FiOG4WJvcjBVFB0qI4+eKoWFH483PKGuLuu6V8Z4T5g63UVA==}
+    engines: {node: '>=6'}
+    dev: false
+
   /espree@9.6.1:
     resolution: {integrity: sha512-oruZaFkjorTpF32kDSI5/75ViwGeZginGGy2NoOSg3Q9bnwlnmDm4HLnkl0RE3n+njDXR037aY1+x58Z/zFdwQ==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
@@ -3591,6 +3631,10 @@ packages:
   /esutils@2.0.3:
     resolution: {integrity: sha512-kVscqXk4OCp68SZ0dkgEKVi6/8ij300KBWTJq32P/dYeWTSwK41WyTxalN1eRmA5Z9UU/LX9D7FWSmV9SAYx6g==}
     engines: {node: '>=0.10.0'}
+
+  /eventemitter3@4.0.7:
+    resolution: {integrity: sha512-8guHBZCwKnFhYdHr2ysuRWErTwhoN2X8XELRlrRwpmfeY2jjuUN4taQMsULKUVo1K4DvZl+0pgfyoysHxvmvEw==}
+    dev: false
 
   /events@3.3.0:
     resolution: {integrity: sha512-mQw+2fkQbALzQ7V0MY0IqdnXNOeTtP4r0lN9z7AAawCXgqea7bDii20AYrIBrFd/Hx0M2Ocz6S111CaFkUcb0Q==}
@@ -4594,6 +4638,15 @@ packages:
       once: 1.3.3
     dev: true
 
+  /mathjax-full@3.2.2:
+    resolution: {integrity: sha512-+LfG9Fik+OuI8SLwsiR02IVdjcnRCy5MufYLi0C3TdMT56L/pjB0alMVGgoWJF8pN9Rc7FESycZB9BMNWIid5w==}
+    dependencies:
+      esm: 3.2.25
+      mhchemparser: 4.2.1
+      mj-context-menu: 0.6.1
+      speech-rule-engine: 4.0.7
+    dev: false
+
   /merge-stream@2.0.0:
     resolution: {integrity: sha512-abv/qOcuPfk3URPfDzmZU1LKmuw8kT+0nIHvKrKgFrwifol/doWcdA4ZqsWQ8ENrFKkd67Mfpo/LovbIUsbt3w==}
 
@@ -4621,6 +4674,10 @@ packages:
 
   /meshoptimizer@0.18.1:
     resolution: {integrity: sha512-ZhoIoL7TNV4s5B6+rx5mC//fw8/POGyNxS/DZyCJeiZ12ScLfVwRE/GfsxwiTkMYYD5DmK2/JXnEVXqL4rF+Sw==}
+    dev: false
+
+  /mhchemparser@4.2.1:
+    resolution: {integrity: sha512-kYmyrCirqJf3zZ9t/0wGgRZ4/ZJw//VwaRVGA75C4nhE60vtnIzhl9J9ndkX/h6hxSN7pjg/cE0VxbnNM+bnDQ==}
     dev: false
 
   /micromatch@4.0.5:
@@ -4662,6 +4719,10 @@ packages:
     dependencies:
       for-in: 1.0.2
       is-extendable: 1.0.1
+    dev: false
+
+  /mj-context-menu@0.6.1:
+    resolution: {integrity: sha512-7NO5s6n10TIV96d4g2uDpG7ZDpIhMh0QNfGdJw/W47JswFcosz457wqz/b5sAKvl12sxINGFCn80NZHKwxQEXA==}
     dev: false
 
   /mmd-parser@1.0.4:
@@ -5081,6 +5142,36 @@ packages:
   /queue-microtask@1.2.3:
     resolution: {integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==}
 
+  /r3f-perf@7.1.2(@react-three/fiber@8.13.6)(@types/three@0.155.0)(react-dom@18.2.0)(react@18.2.0)(three@0.154.0):
+    resolution: {integrity: sha512-AQ78ULjufILylHZpbgBdzk7JF3F7bceehlgOL19xtyJIDhvi4J4vwE5wpxNZ5q4PT4Oza1WADZt6KSlrkCqgkA==}
+    peerDependencies:
+      '@react-three/fiber': '>=8.0'
+      dom: '*'
+      react: '>=18.0'
+      react-dom: '>=18.0'
+      three: '>=0.133'
+    peerDependenciesMeta:
+      '@react-three/fiber':
+        optional: true
+      dom:
+        optional: true
+      react-dom:
+        optional: true
+    dependencies:
+      '@radix-ui/react-icons': 1.3.0(react@18.2.0)
+      '@react-three/drei': 9.80.3(@react-three/fiber@8.13.6)(@types/three@0.155.0)(react-dom@18.2.0)(react@18.2.0)(three@0.154.0)
+      '@react-three/fiber': 8.13.6(react-dom@18.2.0)(react@18.2.0)(three@0.154.0)
+      '@stitches/react': 1.2.8(react@18.2.0)
+      '@utsubo/events': 0.1.7(react@18.2.0)
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+      three: 0.154.0
+      zustand: 4.1.5(react@18.2.0)
+    transitivePeerDependencies:
+      - '@types/three'
+      - immer
+    dev: false
+
   /randombytes@2.1.0:
     resolution: {integrity: sha512-vYl3iOX+4CKUWuxGi9Ukhie6fsqXqS9FE2Zaic4tNFD2N2QQaXOMFbuKK4QmDHC0JO6B1Zp41J0LpT0oR68amQ==}
     dependencies:
@@ -5478,6 +5569,15 @@ packages:
   /sourcemap-codec@1.4.8:
     resolution: {integrity: sha512-9NykojV5Uih4lgo5So5dtw+f0JgJX30KCNI8gwhz2J9A15wD0Ml6tjHKwf6fTSa6fAdVBdZeNOs9eJ71qCk8vA==}
     deprecated: Please use @jridgewell/sourcemap-codec instead
+    dev: false
+
+  /speech-rule-engine@4.0.7:
+    resolution: {integrity: sha512-sJrL3/wHzNwJRLBdf6CjJWIlxC04iYKkyXvYSVsWVOiC2DSkHmxsqOhEeMsBA9XK+CHuNcsdkbFDnoUfAsmp9g==}
+    hasBin: true
+    dependencies:
+      commander: 9.2.0
+      wicked-good-xpath: 1.3.0
+      xmldom-sre: 0.1.31
     dev: false
 
   /split-string@3.1.0:
@@ -6183,6 +6283,10 @@ packages:
       isexe: 2.0.0
     dev: true
 
+  /wicked-good-xpath@1.3.0:
+    resolution: {integrity: sha512-Gd9+TUn5nXdwj/hFsPVx5cuHHiF5Bwuc30jZ4+ronF1qHK5O7HD0sgmXWSEgwKquT3ClLoKPVbO6qGwVwLzvAw==}
+    dev: false
+
   /word-wrap@1.2.5:
     resolution: {integrity: sha512-BN22B5eaMMI9UMtjrGd5g5eCYPpCPDUy0FJXbYsaT5zYxjFOckS53SQDE3pWkVoWpHXVb3BrYcEN4Twa55B5cA==}
     engines: {node: '>=0.10.0'}
@@ -6367,6 +6471,11 @@ packages:
         optional: true
     dev: true
 
+  /xmldom-sre@0.1.31:
+    resolution: {integrity: sha512-f9s+fUkX04BxQf+7mMWAp5zk61pciie+fFLC9hX9UVvCeJQfNHRHXpeo5MPcR0EUf57PYLdt+ZO4f3Ipk2oZUw==}
+    engines: {node: '>=0.1'}
+    dev: false
+
   /xtend@2.2.0:
     resolution: {integrity: sha512-SLt5uylT+4aoXxXuwtQp5ZnMMzhDb1Xkg4pEqc00WUJCQifPfV9Ub1VrNhp9kXkrjZD2I2Hl8WnjP37jzZLPZw==}
     engines: {node: '>=0.4'}
@@ -6412,6 +6521,22 @@ packages:
         optional: true
     dependencies:
       react: 18.2.0
+    dev: false
+
+  /zustand@4.1.5(react@18.2.0):
+    resolution: {integrity: sha512-PsdRT8Bvq22Yyh1tvpgdHNE7OAeFKqJXUxtJvj1Ixw2B9O2YZ1M34ImQ+xyZah4wZrR4lENMoDUutKPpyXCQ/Q==}
+    engines: {node: '>=12.7.0'}
+    peerDependencies:
+      immer: '>=9.0'
+      react: '>=16.8'
+    peerDependenciesMeta:
+      immer:
+        optional: true
+      react:
+        optional: true
+    dependencies:
+      react: 18.2.0
+      use-sync-external-store: 1.2.0(react@18.2.0)
     dev: false
 
   /zustand@4.4.1(@types/react@18.2.20)(react@18.2.0):
