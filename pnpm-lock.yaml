@@ -20,6 +20,12 @@ dependencies:
   '@react-three/fiber':
     specifier: ^8.13.6
     version: 8.13.6(react-dom@18.2.0)(react@18.2.0)(three@0.154.0)
+  '@studio-freight/lenis':
+    specifier: ^1.0.19
+    version: 1.0.19
+  '@types/lodash.debounce':
+    specifier: ^4.0.7
+    version: 4.0.7
   '@types/three':
     specifier: ^0.155.0
     version: 0.155.0
@@ -35,6 +41,12 @@ dependencies:
   leva:
     specifier: ^0.9.35
     version: 0.9.35(@types/react@18.2.20)(react-dom@18.2.0)(react@18.2.0)
+  lodash.debounce:
+    specifier: ^4.0.8
+    version: 4.0.8
+  mathjax:
+    specifier: ^3.2.2
+    version: 3.2.2
   next:
     specifier: ^13.4.13
     version: 13.4.16(@babel/core@7.22.10)(react-dom@18.2.0)(react@18.2.0)
@@ -2230,6 +2242,10 @@ packages:
       react: 18.2.0
     dev: false
 
+  /@studio-freight/lenis@1.0.19:
+    resolution: {integrity: sha512-0DZdjDaJqhYVxzcbj6Dpv/BHS/RLc4f6XYu/n0t0fUKatuvO5vtXW4gW4GHgJPiPIpamct7bg8hpihbjZ6fqpw==}
+    dev: false
+
   /@surma/rollup-plugin-off-main-thread@2.2.3:
     resolution: {integrity: sha512-lR8q/9W7hZpMWweNiAKU7NQerBnzQQLvi8qnTDU/fxItPhtZVMbPV3lbCwjhIlNBe9Bbr5V+KHshvWmVSG9cxQ==}
     dependencies:
@@ -2285,6 +2301,16 @@ packages:
   /@types/json5@0.0.29:
     resolution: {integrity: sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==}
     dev: true
+
+  /@types/lodash.debounce@4.0.7:
+    resolution: {integrity: sha512-X1T4wMZ+gT000M2/91SYj0d/7JfeNZ9PeeOldSNoE/lunLeQXKvkmIumI29IaKMotU/ln/McOIvgzZcQ/3TrSA==}
+    dependencies:
+      '@types/lodash': 4.14.197
+    dev: false
+
+  /@types/lodash@4.14.197:
+    resolution: {integrity: sha512-BMVOiWs0uNxHVlHBgzTIqJYmj+PgCo4euloGF+5m4okL3rEYzM2EEv78mw8zWSMM57dM7kVIgJ2QDvwHSoCI5g==}
+    dev: false
 
   /@types/minimatch@5.1.2:
     resolution: {integrity: sha512-K0VQKziLUWkVKiRVrx4a40iPaxTUefQmjtkQofBkYRcoaaL/8rhwDWww9qWbrgicNOgnpIsMxyNIUM4+n6dUIA==}
@@ -4645,6 +4671,10 @@ packages:
       mhchemparser: 4.2.1
       mj-context-menu: 0.6.1
       speech-rule-engine: 4.0.7
+    dev: false
+
+  /mathjax@3.2.2:
+    resolution: {integrity: sha512-Bt+SSVU8eBG27zChVewOicYs7Xsdt40qm4+UpHyX7k0/O9NliPc+x77k1/FEsPsjKPZGJvtRZM1vO+geW0OhGw==}
     dev: false
 
   /merge-stream@2.0.0:
