@@ -43,6 +43,10 @@ module.exports = {
           from: { opacity: 1 },
           to: { opacity: 0 },
         },
+        spin: {
+          from: { transform: 'rotate(0deg)' },
+          to: { transform: 'rotate(360deg)' },
+        },
       },
     },
 
@@ -55,6 +59,7 @@ module.exports = {
       enterFromRight: 'enterFromRight 250ms ease',
       exitToLeft: 'exitToLeft 250ms ease',
       exitToRight: 'exitToRight 250ms ease',
+      spin: 'spin 1000ms ease',
     },
   },
   variants: {
