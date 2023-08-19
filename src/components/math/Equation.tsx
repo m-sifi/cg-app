@@ -1,5 +1,7 @@
 'use client'
-import { MathJax, MathJaxContext } from 'better-react-mathjax'
+import { MathJax, MathJaxBaseContext, MathJaxContext } from 'better-react-mathjax'
+import React, { useContext, useEffect, useMemo, useRef } from 'react'
+import katex from 'katex'
 
 interface EquationProps {
   className?: string
@@ -17,8 +19,6 @@ const Equation = ({ text, className }: EquationProps) => {
     },
   }
 
-  if (text === '') text = ' '
-
   return (
     <span className={className}>
       <MathJaxContext version={3} config={config}>
@@ -30,4 +30,14 @@ const Equation = ({ text, className }: EquationProps) => {
   )
 }
 
-export { Equation }
+const KatexEquation = ({ text, className }: EquationProps) => {
+  const ref = useRef<HTMLDivElement>(null!)
+
+  useEffect(() => {
+    return katex.render(text, ref.current, { throwOnError: false })
+  }, [text])
+
+  return <div className={className} ref={ref}></div>
+}
+
+export { Equation, KatexEquation }
