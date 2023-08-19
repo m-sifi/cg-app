@@ -9,6 +9,8 @@ interface ViewProps {
   props?: any
   orbit?: boolean
   className?: string
+  track?: any
+  index?: number
 }
 
 export const Common = ({ color }) => (
