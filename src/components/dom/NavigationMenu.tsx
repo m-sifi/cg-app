@@ -88,10 +88,10 @@ function NavigationMenu() {
           <NavListItem title={'Matrices'}>
             <NavList>
               <ListItemLink title='Translation' href='/matrices/translation'>
-                Build high-quality, accessible design systems and web apps.
+                Understand concept of translation matrices by seamlessly relocating intricate shapes through space.
               </ListItemLink>
-              <ListItemLink title='Scaling' href='/primitives/docs/overview/getting-started'>
-                A quick tutorial to get you up and running with Radix Primitives.
+              <ListItemLink title='Scaling' href='/matrices/scaling'>
+                See the impact of scalar matrices across intricate 3D shapes.
               </ListItemLink>
               <ListItemLink title='Rotation' href='/primitives/docs/overview/getting-started'>
                 A quick tutorial to get you up and running with Radix Primitives.
