@@ -71,7 +71,7 @@ const ListItemLink = forwardRef<HTMLAnchorElement, ListItemLinkProps>(
 
 function NavigationMenu() {
   return (
-    <RadixNavigationMenu.Root className='relative z-10 flex w-screen justify-center'>
+    <RadixNavigationMenu.Root className='relative z-10 flex h-8 w-screen justify-center'>
       <RadixNavigationMenu.List className='m-0 grid w-screen list-none grid-cols-nav justify-center gap-2 rounded-md bg-white p-2 shadow-md'>
         <Logo />
         <div className='absolute top-0 flex w-screen justify-center p-1'>
@@ -88,19 +88,19 @@ function NavigationMenu() {
           <NavListItem title={'Matrices'}>
             <NavList>
               <ListItemLink title='Translation' href='/matrices/translation'>
-                Understand concept of translation matrices by seamlessly relocating intricate shapes through space.
+                Understand concept of translation matrices by relocating intricate shapes
               </ListItemLink>
               <ListItemLink title='Scaling' href='/matrices/scaling'>
-                See the impact of scalar matrices across intricate 3D shapes.
+                Understand concept of translation matrices by resizing intricate shapes
               </ListItemLink>
-              <ListItemLink title='Rotation' href='/primitives/docs/overview/getting-started'>
-                A quick tutorial to get you up and running with Radix Primitives.
+              <ListItemLink title='Rotation' href='/matrices/rotation'>
+                Understand concept of rotation matrices by rotating intricate shapes
               </ListItemLink>
             </NavList>
           </NavListItem>
           <NavListItem title={'Quaternions'}>
             <NavList>
-              <ListItemLink title='Rotation' href='/primitives/docs/overview/introduction'>
+              <ListItemLink title='Rotation' href='/quaternion/rotation'>
                 Build high-quality, accessible design systems and web apps.
               </ListItemLink>
             </NavList>
