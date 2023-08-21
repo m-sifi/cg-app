@@ -31,13 +31,13 @@ const Equation = ({ text, className }: EquationProps) => {
 }
 
 const KatexEquation = ({ text, className }: EquationProps) => {
-  const ref = useRef<HTMLDivElement>(null!)
+  const ref = useRef<HTMLElement>(null!)
 
   useEffect(() => {
     return katex.render(text, ref.current, { throwOnError: false })
   }, [text])
 
-  return <div className={className} ref={ref}></div>
+  return <span className={className} ref={ref}></span>
 }
 
 export { Equation, KatexEquation }
