@@ -177,7 +177,7 @@ export default function MatrixRotationPage() {
     <>
       <GridLayout>
         <Suspense fallback={null}>
-          <div className='flex flex-col gap-4 bg-white px-12 py-8'>
+          <div className='flex flex-col gap-4 overflow-auto bg-white px-12 py-8'>
             <h2 className='text-center text-4xl font-semibold'>Rotation</h2>
             <p>
               A Rotation Matrix allows you to rotate objects in 3D space. It is typically composed of a series of 4x4
