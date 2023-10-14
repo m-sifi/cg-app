@@ -1,64 +1,23 @@
 'use client'
 
 import { Loader } from '@/components/Loader'
-import { GridLayout } from '@/components/dom/GridLayout'
-import { KatexEquation } from '@/components/math/Equation'
-import { Box, Environment, Line, OrbitControls, PerspectiveCamera } from '@react-three/drei'
-import { useFrame } from '@react-three/fiber'
+import { Common } from '@/components/canvas/Common'
+import { normalise, radians, round } from '@/helpers/math'
+import { PerspectiveCamera } from '@react-three/drei'
 import { useControls } from 'leva'
 import dynamic from 'next/dynamic'
-import { MutableRefObject, Suspense, useEffect, useMemo, useRef } from 'react'
+import { useEffect, useMemo, useRef } from 'react'
 import * as THREE from 'three'
-
-import 'katex/dist/katex.min.css'
+import { Cube } from './components/Cube'
 import { useQuaternionRotationStore } from './hooks/useQuaternionStore'
+import { Blockquote, Container, Heading, Section } from '@radix-ui/themes'
+import { KatexEquation } from '@/components/math/Equation'
 
 const View = dynamic(() => import('@/components/canvas/View').then((mod) => mod.View), {
   ssr: false,
   loading: () => <Loader />,
 })
 
-const round = (float: number): string => {
-  return (Math.round(float * 100) / 100).toFixed(1)
-}
-
-const normalise = (vector: [number, number, number]): [number, number, number] => {
-  const [x, y, z] = vector
-  const length = Math.sqrt(x * x + y * y + z * z)
-
-  if (length == 0) return [0, 0, 0]
-  return [x / length, y / length, z / length]
-}
-
-const SimpleGrid = () => {
-  return (
-    <>
-      <group>
-        <Line
-          points={[
-            [-20, 0, 0],
-            [20, 0, 0],
-          ]}
-          color='red'
-        />
-        <Line
-          points={[
-            [0, -20, 0],
-            [0, 20, 0],
-          ]}
-          color='green'
-        />
-        <Line
-          points={[
-            [0, 0, -20],
-            [0, 0, 20],
-          ]}
-          color='blue'
-        />
-      </group>
-    </>
-  )
-}
 
 const useQuaternionControls = () => {
   const [setAxis, setAngle] = useQuaternionRotationStore((state) => [state.setAxis, state.setAngle])
@@ -94,32 +53,6 @@ const useQuaternionControls = () => {
   }, [axis, set, setAxis, vector])
 }
 
-const Cube = () => {
-  const [axis, angle] = useQuaternionRotationStore((state) => [state.axis, state.angle])
-  const ref = useRef<THREE.Group>()
-
-  const radians = useMemo(() => {
-    const toRad = (deg: number) => (deg * Math.PI) / 180
-    return toRad(angle)
-  }, [angle])
-
-  let quaternion = new THREE.Quaternion()
-  useFrame((state, delta) => {
-    quaternion.setFromAxisAngle(new THREE.Vector3(axis[0], axis[1], axis[2]), radians)
-    ref.current.quaternion.slerp(quaternion, delta * 15)
-  })
-
-  return (
-    <>
-      <group ref={ref}>
-        <Box args={[5, 5, 5]}>
-          <meshStandardMaterial color={'orange'} />
-        </Box>
-      </group>
-    </>
-  )
-}
-
 export default function QuaternionRotationPage() {
   const cameraRef = useRef<THREE.PerspectiveCamera>()
   const [angle, axis] = useQuaternionRotationStore((state) => [state.angle, state.axis])
@@ -127,65 +60,40 @@ export default function QuaternionRotationPage() {
 
   const view1 = useRef()
 
-  const radians = useMemo(() => {
-    const toRad = (deg: number) => (deg * Math.PI) / 180
-    return toRad(angle)
+  const theta = useMemo(() => {
+    return radians(angle)
   }, [angle])
 
-  let _angle = round(radians)
-  let _axis = axis.map((p) => round(p))
+  let _angle = round(theta)
+  let _axis = axis.map((p) => p.toFixed(1))
 
   return (
     <>
-      <GridLayout>
-        <Suspense fallback={null}>
-          <div className='flex flex-col gap-4 bg-white px-12 py-8'>
-            <h2 className='text-center text-4xl font-semibold'>Axis Angle</h2>
-            <p>
-              A Quaternion is a 4 dimensional vector that is used to represent rotations in 3D space. It is a more
-              compact way of representing rotations compared to a rotation matrix.
-            </p>
-            <div className='flex flex-col gap-2'>
-              <p className='text-center'>
-                <KatexEquation className='block' text={`q = s + ix + jy + kz = [s;v] = [s; x, y, z] `}></KatexEquation>
-              </p>
-              <div className='flex flex-col gap-2'>
-                <p>
-                  <KatexEquation className='inline' text={`s, x, y, z `} /> are scalars
-                </p>
-                <p>
-                  <KatexEquation className='inline' text={`v = (x,y,z)`} /> is a vector
-                </p>
-              </div>
-            </div>
-            <p>
-              Given an axis angle <KatexEquation className='inline' text='[\theta(x, y, z)]' />, the corresponding
-              quaternion is
-            </p>
-            <p>
-              <KatexEquation className='inline' text={`cos(\\frac{\\theta}{2})+ sin(\\frac{\\theta}{2})[ix, jy, kz]`} />
-              <KatexEquation
-                className='inline'
-                text={`= cos(\\frac{${_angle}}{2}) + sin(\\frac{${_angle}}{2})[${_axis[0]} \\cdot x, ${_axis[1]} \\cdot y, ${_axis[2]} \\cdot z]`}
-              />
-              .
-            </p>
-          </div>
-        </Suspense>
-        <div className='bg-zinc-800'>
-          <div className='relative' ref={view1} />
-          <View className='h-full w-full' index={0} track={view1} orbit>
-            <Cube />
-            <Environment preset='city' />
-            <SimpleGrid />
-            <ambientLight intensity={0.3} />
-            <pointLight position={[5, 5, 5]} intensity={0.8} />
-            <directionalLight position={[0, 0, 10]} intensity={0.3} />
-            <PerspectiveCamera ref={cameraRef} makeDefault position={[10, 10, 10]} fov={60} />
-            <OrbitControls makeDefault />
-          </View>
-        </div>
-      </GridLayout>
+      <div className='relative' ref={view1} />
+      <View className='h-full w-full' index={0} track={view1} orbit>
+        <Cube />
+        <Common />
+        <PerspectiveCamera ref={cameraRef} makeDefault position={[15, 15, 15]} fov={60} />
+      </View>
+      <div className='fixed pl-80 w-screen left-0 top-10 z-10'>
+        <Container p='4'>
+          <Heading size='4' weight='light'>
+            Quaternion is a 4 dimensional vector that is used to represent rotations in 3D space. <br />
+            It provide compactness over matrices, reducing memory usage, enabling efficient interpolation, avoiding gimbal lock issues, and offering improved numerical stability.
+          </Heading>
+          <Section size='1' mt={'2'} className='flex justify-center items-center'>
+            <KatexEquation
+              className='mx-auto block'
+              text={`q = s + ix + jy + kz = [s;v] = [s; x, y, z] = cos(\\frac{${_angle}}{2}) + sin(\\frac{${_angle}}{2})[${_axis[0]} \\cdot x, ${_axis[1]} \\cdot y, ${_axis[2]} \\cdot z]`}
+            />
+          </Section>
+        </Container>
+      </div>
+      <div className='fixed pl-80 w-screen left-0 bottom-10 z-10'>
+        <Section p='6'>
+          <Blockquote>Experiment with axis-vector and angle values to discover the precision and versatility of quaternion rotations in controlling 3D object orientations.</Blockquote>
+        </Section>
+      </div>
     </>
   )
 }
