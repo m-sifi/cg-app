@@ -18,7 +18,6 @@ const View = dynamic(() => import('@/components/canvas/View').then((mod) => mod.
   loading: () => <Loader />,
 })
 
-
 const useQuaternionControls = () => {
   const [setAxis, setAngle] = useQuaternionRotationStore((state) => [state.setAxis, state.setAngle])
   const [{ axis, vector, angle }, set] = useControls(() => ({
@@ -75,13 +74,14 @@ export default function QuaternionRotationPage() {
         <Common />
         <PerspectiveCamera ref={cameraRef} makeDefault position={[15, 15, 15]} fov={60} />
       </View>
-      <div className='fixed pl-80 w-screen left-0 top-10 z-10'>
+      <div className='fixed left-0 top-10 z-10 w-screen pl-80'>
         <Container p='4'>
           <Heading size='4' weight='light'>
             Quaternion is a 4 dimensional vector that is used to represent rotations in 3D space. <br />
-            It provide compactness over matrices, reducing memory usage, enabling efficient interpolation, avoiding gimbal lock issues, and offering improved numerical stability.
+            It provide compactness over matrices, reducing memory usage, enabling efficient interpolation, avoiding
+            gimbal lock issues, and offering improved numerical stability.
           </Heading>
-          <Section size='1' mt={'2'} className='flex justify-center items-center'>
+          <Section size='1' mt={'2'} className='flex items-center justify-center'>
             <KatexEquation
               className='mx-auto block'
               text={`q = s + ix + jy + kz = [s;v] = [s; x, y, z] = cos(\\frac{${_angle}}{2}) + sin(\\frac{${_angle}}{2})[${_axis[0]} \\cdot x, ${_axis[1]} \\cdot y, ${_axis[2]} \\cdot z]`}
@@ -89,9 +89,12 @@ export default function QuaternionRotationPage() {
           </Section>
         </Container>
       </div>
-      <div className='fixed pl-80 w-screen left-0 bottom-10 z-10'>
+      <div className='fixed bottom-10 left-0 z-10 w-screen pl-80'>
         <Section p='6'>
-          <Blockquote>Experiment with axis-vector and angle values to discover the precision and versatility of quaternion rotations in controlling 3D object orientations.</Blockquote>
+          <Blockquote>
+            Experiment with axis-vector and angle values to discover the precision and versatility of quaternion
+            rotations in controlling 3D object orientations.
+          </Blockquote>
         </Section>
       </div>
     </>

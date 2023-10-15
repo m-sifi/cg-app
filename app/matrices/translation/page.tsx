@@ -61,9 +61,9 @@ export default function MatrixTranslationPage() {
     return temp.toArray()
   }, [position, origin]) as [number, number, number]
 
-  let _position = position.map((p) => round(p))
-  let _origin = origin.map((p) => round(p))
-  let _translation = translation.map((p) => round(p))
+  let _position = position.map((p) => p.toFixed(1))
+  let _origin = origin.map((p) => p.toFixed(1))
+  let _translation = translation.map((p) => p.toFixed(1))
 
   useTranslationControls()
   const view1 = useRef()
@@ -79,24 +79,39 @@ export default function MatrixTranslationPage() {
         </group>
         <Common />
       </View>
-      <div className='fixed pl-80 w-screen left-0 top-10 z-10'>
+      <div className='fixed left-0 top-10 z-10 w-screen pl-80'>
         <Container p='4'>
           <Heading size='4' weight='light'>
-            A Translation Matrix is a 4x4 matrix used in 3D graphics to represent the transformation of an object's position in space.<br />
-            It describes how much the object has to move from its original position along the x, y, and z axes.<br />
-            The translation matrix is applied to the object's coordinates, resulting in a new position relative to its original location.
+            A Translation Matrix is a 4x4 matrix used in 3D graphics to represent the transformation of an object&apos;s
+            position in space.
+            <br />
+            It describes how much the object has to move from its original position along the x, y, and z axes.
+            <br />
+            The translation matrix is applied to the object&apos;s coordinates, resulting in a new position relative to
+            its original location.
           </Heading>
-          <Section size='1' mt={'2'} className='flex justify-center items-center'>
+          <Section size='1' mt={'2'} className='flex items-center justify-center'>
             <KatexEquation
               className='select-none'
-              text={`p^{\\prime} = \\begin{bmatrix} ${_position[0]} \\\\ ${_position[1]} \\\\ ${_position[2]} \\\\ 1 \\end{bmatrix} = \\begin{bmatrix} 1 & 0 & 0 & ${_translation[0]} \\\\ 0 & 1 & 0 & ${_translation[1]} \\\\ 0 & 0 & 1 & ${_translation[2]} \\\\ 0 & 0 & 0 & 1 \\end{bmatrix} \\begin{bmatrix} ${_origin[0]} \\\\ ${_origin[1]} \\\\ ${_origin[2]} \\\\ 1 \\end{bmatrix} = \\begin{bmatrix} ${_origin[0]} + ${_translation[0]} \\\\ ${_origin[1]} + ${_translation[1]} \\\\ ${_origin[2]} + ${_translation[2]} \\\\ 1 \\end{bmatrix}`}
+              text={`p^{\\prime} = \\begin{bmatrix} ${position[0].toFixed(1)} \\\\ ${_position[1]} \\\\ ${
+                _position[2]
+              } \\\\ 1 \\end{bmatrix} = \\begin{bmatrix} 1 & 0 & 0 & ${_translation[0]} \\\\ 0 & 1 & 0 & ${
+                _translation[1]
+              } \\\\ 0 & 0 & 1 & ${_translation[2]} \\\\ 0 & 0 & 0 & 1 \\end{bmatrix} \\begin{bmatrix} ${
+                _origin[0]
+              } \\\\ ${_origin[1]} \\\\ ${_origin[2]} \\\\ 1 \\end{bmatrix} = \\begin{bmatrix} ${_origin[0]} + ${
+                _translation[0]
+              } \\\\ ${_origin[1]} + ${_translation[1]} \\\\ ${_origin[2]} + ${_translation[2]} \\\\ 1 \\end{bmatrix}`}
             />
           </Section>
         </Container>
       </div>
-      <div className='fixed pl-80 w-screen left-0 bottom-10 z-10'>
+      <div className='fixed bottom-10 left-0 z-10 w-screen pl-80'>
         <Section p='6'>
-          <Blockquote>Feel free to explore the impact of different origin and position values by adjusting them, and observe how the translation matrix dynamically transforms the object's position in the 3D space.</Blockquote>
+          <Blockquote>
+            Feel free to explore the impact of different origin and position values by adjusting them, and observe how
+            the translation matrix dynamically transforms the object&apos;s position in the 3D space.
+          </Blockquote>
         </Section>
       </div>
     </>

@@ -15,15 +15,10 @@ const Layout = ({ children }) => {
     <>
       <ThemeProvider attribute='class'>
         <Theme scaling={'110%'}>
-          <div
-            className='overflow-none touch-action-auto'
-            ref={ref}
-          >
+          <div className='overflow-none touch-action-auto' ref={ref}>
             <Flex width='100%'>
               <Navigation />
-              <div className='flex-grow'>
-                {children}
-              </div>
+              <div className='flex-grow'>{children}</div>
             </Flex>
             <Scene
               style={{

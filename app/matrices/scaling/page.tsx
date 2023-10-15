@@ -110,13 +110,15 @@ export default function MatrixScalingPage() {
         <Common />
         <PerspectiveCamera ref={cameraRef} makeDefault position={[15, 15, 15]} fov={60} />
       </View>
-      <div className='fixed pl-80 w-screen left-0 top-10 z-10'>
+      <div className='fixed left-0 top-10 z-10 w-screen pl-80'>
         <Container p='4'>
           <Heading size='4' weight='light'>
-            A Scale Matrix is a 4x4 matrix used in 3D graphics to control the size or scale of an object along each axis.<br />
+            A Scale Matrix is a 4x4 matrix used in 3D graphics to control the size or scale of an object along each
+            axis.
+            <br />
             It is an essential component for resizing objects in a three-dimensional space.
           </Heading>
-          <Section size='1' mt={'2'} className='flex justify-center items-center'>
+          <Section size='1' mt={'2'} className='flex items-center justify-center'>
             <KatexEquation
               className='mx-auto block'
               text={`p^{\\prime} = \\begin{bmatrix} x^{\\prime} \\\\ y^{\\prime} \\\\ z^{\\prime} \\\\ 1 \\end{bmatrix} = \\begin{bmatrix} ${_scale[0]} & 0 & 0 & 0 \\\\ 0 & ${_scale[1]} & 0 & 0 \\\\ 0 & 0 & ${_scale[2]} & 0 \\\\ 0 & 0 & 0 & 1 \\end{bmatrix} \\begin{bmatrix} x \\\\ y \\\\ z \\\\ 1 \\end{bmatrix} = \\begin{bmatrix} x \\cdot t_x \\\\ y \\cdot t_y \\\\ z \\cdot t_z \\\\ 1 \\end{bmatrix}`}
@@ -124,9 +126,12 @@ export default function MatrixScalingPage() {
           </Section>
         </Container>
       </div>
-      <div className='fixed pl-80 w-screen left-0 bottom-10 z-10'>
+      <div className='fixed bottom-10 left-0 z-10 w-screen pl-80'>
         <Section p='6'>
-          <Blockquote>Explore the effects of different scaling values on each axis to see how the Scale Matrix dynamically adjusts the object's size in 3D space.</Blockquote>
+          <Blockquote>
+            Explore the effects of different scaling values on each axis to see how the Scale Matrix dynamically adjusts
+            the object&apos;s size in 3D space.
+          </Blockquote>
         </Section>
       </div>
     </>
