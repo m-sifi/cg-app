@@ -17,7 +17,7 @@ const View = dynamic(() => import('@/components/canvas/View').then((mod) => mod.
 })
 
 
-export default function LightingModePage() {
+export default function LightingNormalPage() {
   const [type, setType] = useState<NormalType>(NormalType.VERTEX);
   const cameraRef = useRef<THREE.PerspectiveCamera>()
   const view1 = useRef()
