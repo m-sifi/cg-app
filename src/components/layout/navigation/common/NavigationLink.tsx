@@ -8,11 +8,13 @@ interface NavigationLinkProps {
 
 const NavigationLink = ({ href, text }: NavigationLinkProps) => {
   return (
-    <RadixLink color='gray' asChild className='px-4 py-2 rounded-md hover:bg-neutral-600 transition-colors'>
-      <Box width='100%'>
-        <Link href={href}>{text}</Link>
-      </Box>
-    </RadixLink>
+    <Link href={href} replace>
+      <RadixLink color='gray' asChild className='rounded-md px-4 py-2 transition-colors hover:bg-neutral-600'>
+        <Box width='100%'>
+          {text}
+        </Box>
+      </RadixLink>
+    </Link>
   )
 }
 
