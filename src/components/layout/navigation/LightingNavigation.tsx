@@ -12,7 +12,12 @@ const LightingNavigation = () => {
       </NavigationMenu.Item>
       <NavigationMenu.Item>
         <NavigationLink href='/lighting/vertex' text='Vertex' />
+      </NavigationMenu.Item>
+      <NavigationMenu.Item>
         <NavigationLink href='/lighting/normal' text='Normal' />
+      </NavigationMenu.Item>
+      <NavigationMenu.Item>
+        <NavigationLink href='/lighting/basic-lighting' text='Basic Lighting' />
       </NavigationMenu.Item>
     </>
   )
