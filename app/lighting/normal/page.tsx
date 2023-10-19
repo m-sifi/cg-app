@@ -72,6 +72,7 @@ export default function LightingNormalPage() {
         <Container p='6' px={'9'}>
           <Heading size='8' weight='light' mb={'2'}>Normals</Heading>
           <Heading size='4' weight='light'>
+            Normals are used to determine how light interacts with a surface. <br />
             {getNormalTypeExplaination(type)}
             <div className='mt-3 flex gap-2'>
               <Button onClick={decrementType}>Previous</Button>
