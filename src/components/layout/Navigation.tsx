@@ -13,10 +13,10 @@ import { ThemeToggle } from './navigation/ThemeToggle'
 
 const Navigation = () => {
   return (
-    <NavigationMenu.Root className='outline outline-1 outline-neutral-600 bg-neutral-900 z-50'>
-      <NavigationMenu.List className='w-80 h-screen p-4 flex flex-col gap-3'>
+    <NavigationMenu.Root className='z-50 bg-neutral-900 outline outline-1 outline-neutral-600'>
+      <NavigationMenu.List className='flex h-screen w-80 flex-col gap-3 p-4'>
         <Logo />
-        <SearchBar />
+        {/* <SearchBar /> */}
         <VectorNavigation />
         <MatrixNavigation />
         <QuaternionNavigation />

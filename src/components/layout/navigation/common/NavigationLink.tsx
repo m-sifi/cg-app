@@ -9,7 +9,7 @@ interface NavigationLinkProps {
 const NavigationLink = ({ href, text }: NavigationLinkProps) => {
   return (
     <Link href={href} replace>
-      <RadixLink color='gray' asChild className='rounded-md px-4 py-2 transition-colors hover:bg-neutral-600'>
+      <RadixLink color='gray' asChild className='rounded-md px-4 py-2 transition-colors duration-300 hover:bg-neutral-600'>
         <Box width='100%'>
           {text}
         </Box>
