@@ -1,16 +1,12 @@
 'use client'
 
-import useSWR from 'swr'
 import { Loader } from '@/components/Loader'
-import { Blockquote, Container, Heading, Section, Box, Text, Strong } from '@radix-ui/themes'
+import { Blockquote, Box, Heading, Section, Strong, Text } from '@radix-ui/themes'
 import { PerspectiveCamera } from '@react-three/drei'
-import { useControls } from 'leva'
 import dynamic from 'next/dynamic'
-import { Suspense, useMemo, useRef, useState } from 'react'
+import { Suspense, useRef } from 'react'
 import * as THREE from 'three'
-import { useFrame } from '@react-three/fiber'
-import { Mesh, ShaderMaterial } from 'three'
-import { AmbientCube } from './components/AmbientCube';
+import { Cube } from './components/Cube'
 
 const View = dynamic(() => import('@/components/canvas/View').then((mod) => mod.View), {
     ssr: false,
@@ -25,7 +21,7 @@ export default function LightingBasicPage() {
             <Suspense fallback={null}>
                 <div className='relative' ref={view1} />
                 <View className='h-full w-full' index={0} track={view1} orbit>
-                    <AmbientCube ref={cameraRef} />
+                    <Cube ref={cameraRef} />
                     <PerspectiveCamera ref={cameraRef} makeDefault position={[0, 0, 30]} fov={60} />
                 </View>
                 <div className='fixed left-0 top-10 z-10 w-screen pl-80'>
