@@ -1,19 +1,17 @@
 'use client'
 
-import { Loader } from '@/components/Loader'
-import { KatexEquation } from '@/components/math/Equation'
-import { PerspectiveCamera } from '@react-three/drei'
-import { useControls } from 'leva'
-import dynamic from 'next/dynamic'
-import { useEffect, useMemo, useRef } from 'react'
-import * as THREE from 'three'
-import { useRotationStore } from './hooks/useRotationStore'
-
-import { Common } from '@/components/canvas/Common'
-import { round } from '@/helpers/math'
 import { Blockquote, Box, Container, Heading, Section, Text } from '@radix-ui/themes'
-import 'katex/dist/katex.min.css'
+import { Common } from '@/components/canvas/Common'
 import { Cube } from './components/Cube'
+import { KatexEquation } from '@/components/math/Equation'
+import { Loader } from '@/components/Loader'
+import { Matrix } from './components/Matrix'
+import { PerspectiveCamera } from '@react-three/drei'
+import { useEffect, useMemo, useRef } from 'react'
+import { useRotationControls } from './hooks/useRotationControls'
+import { useRotationStore } from './hooks/useRotationStore'
+import * as THREE from 'three'
+import dynamic from 'next/dynamic'
 
 const View = dynamic(() => import('@/components/canvas/View').then((mod) => mod.View), {
   ssr: false,
@@ -48,64 +46,47 @@ function getRotationZMatrix(theta?: number) {
   return equation.replaceAll('{theta}', _theta)
 }
 
-const useRotationControls = () => {
-  const [setX, setY, setZ] = useRotationStore((state) => [state.setX, state.setY, state.setZ])
-  const { x, y, z } = useControls({
-    x: {
-      value: 0,
-      step: 0.1,
-      min: 0.1,
-      max: 360,
-      label: 'x-axis (blue)',
-    },
-    y: {
-      value: 0,
-      step: 0.1,
-      min: 0.1,
-      max: 360,
-      label: 'y-axis (red)',
-    },
-    z: {
-      value: 0,
-      step: 0.1,
-      min: 0.1,
-      max: 360,
-      label: 'z-axis (green)',
-    },
-  })
-
-  useEffect(() => {
-    setX(x)
-  }, [x, setX])
-
-  useEffect(() => {
-    setY(y)
-  }, [y, setY])
-
-  useEffect(() => {
-    setZ(z)
-  }, [z, setZ])
-}
-
 export default function MatrixRotationPage() {
   const cameraRef = useRef<THREE.PerspectiveCamera>()
 
   useRotationControls()
 
-  const rotation = useRotationStore((state) => [state.x, state.y, state.z])
-  const radians = useMemo(() => {
-    const toRad = (deg: number) => (deg * Math.PI) / 180
-    return rotation.map((deg) => toRad(deg))
-  }, [rotation])
+  const rotation = useRotationStore((state) => state.rotation) as THREE.Euler;
 
   const finalRotation = useMemo(() => {
     const matrix = new THREE.Matrix4()
     const newRotation = new THREE.Quaternion()
-    newRotation.setFromEuler(new THREE.Euler(...radians))
+    newRotation.setFromEuler(rotation)
 
     matrix.makeRotationFromQuaternion(newRotation)
     return getMatrix(matrix)
-  }, [radians])
+  }, [rotation])
+
+  const order = rotation.order as string
+    ;
+  const matrixOrder = useMemo(() => {
+    return ['', '', '']
+  }, []);
+
+  useEffect(() => {
+
+    for (let i = 0; i < order.length; i++) {
+      const axis = order[i];
+
+      switch (axis) {
+        case 'X':
+          matrixOrder[i] = getRotationXMatrix(rotation.x)
+          break;
+        case 'Y':
+          matrixOrder[i] = getRotationYMatrix(rotation.y)
+          break;
+        case 'Z':
+          matrixOrder[i] = getRotationZMatrix(rotation.z)
+          break;
+      }
+    }
+
+  }, [matrixOrder, order, rotation])
 
   const view1 = useRef()
 
@@ -122,32 +103,15 @@ export default function MatrixRotationPage() {
           <Heading size='4' weight='light'>
             A Rotation Matrix is a 4x4 matrix used in 3D graphics to represent the orientation of an object in space.
             <br />
-            It is commonly composed of a series of 4x4 matrices, with each matrix representing a rotation around a
-            specific axis.
-            <br />
+            It is commonly composed of a series of 4x4 matrices, with each matrix representing a rotation around a specific axis.
           </Heading>
           <Box mt={'2'}>
             <Text size={'2'}>Note that the values are represented in radians</Text>
           </Box>
           <Section size='1' mt={'2'} className='flex items-center justify-center'>
-            <Box className='text-blue-400'>
-              <KatexEquation text={getRotationXMatrix(radians[0])} />
-              <p className='text-center'>
-                <KatexEquation text={'\\text{x-axis}'} />
-              </p>
-            </Box>
-            <Box className='text-red-400'>
-              <KatexEquation text={getRotationYMatrix(radians[1])} />
-              <p className='text-center'>
-                <KatexEquation text={'\\text{y-axis}'} />
-              </p>
-            </Box>
-            <Box className='text-green-400'>
-              <KatexEquation text={getRotationZMatrix(radians[2])} />
-              <p className='text-center'>
-                <KatexEquation text={'\\text{z-axis}'} />
-              </p>
-            </Box>
+            <Matrix axis={order[0]} matrix={matrixOrder[0]} />
+            <Matrix axis={order[1]} matrix={matrixOrder[1]} />
+            <Matrix axis={order[2]} matrix={matrixOrder[2]} />
             <Box className=''>
               <KatexEquation text={`= ${finalRotation}`}></KatexEquation>
               <p className='text-center'>
