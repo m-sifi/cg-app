@@ -18,6 +18,8 @@ const nextConfig = {
   // },
   output: 'export',
   crossOrigin: 'anonymous',
+  basePath: '/cg-app',
+  assetPrefix: '/cg-app',
   reactStrictMode: true, // Recommended for the `pages` directory, default in `app`.
   experimental: {
     reactRoot: 'concurrent',
