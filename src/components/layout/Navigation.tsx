@@ -17,7 +17,7 @@ const Navigation = () => {
       <NavigationMenu.List className='flex h-screen w-80 flex-col gap-3 p-4'>
         <Logo />
         {/* <SearchBar /> */}
-        <VectorNavigation />
+        {/* <VectorNavigation /> */}
         <MatrixNavigation />
         <QuaternionNavigation />
         <TransformNavigation />

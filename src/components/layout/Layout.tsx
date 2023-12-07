@@ -4,16 +4,18 @@ import { useRef } from 'react'
 import dynamic from 'next/dynamic'
 import React from 'react'
 import { Navigation } from './Navigation'
-import { ThemeProvider } from 'next-themes'
+import { ThemeProvider, useTheme } from 'next-themes'
 import { Container, Flex, Grid, Theme } from '@radix-ui/themes'
 const Scene = dynamic(() => import('@/components/canvas/Scene'), { ssr: false })
 
 const Layout = ({ children }) => {
   const ref = useRef()
 
+  useTheme().setTheme('dark')
+
   return (
     <>
-      <ThemeProvider attribute='class'>
+      <ThemeProvider enableSystem={false} attribute='class'>
         <Theme scaling={'110%'}>
           <div className='touch-auto overflow-hidden' ref={ref}>
             <Flex width='100%'>
