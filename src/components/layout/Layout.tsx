@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import dynamic from 'next/dynamic'
 import React from 'react'
 import { Navigation } from './Navigation'
@@ -11,11 +11,15 @@ const Scene = dynamic(() => import('@/components/canvas/Scene'), { ssr: false })
 const Layout = ({ children }) => {
   const ref = useRef()
 
-  useTheme().setTheme('dark')
+  const { setTheme, theme } = useTheme()
+
+  useEffect(() => {
+    setTheme('dark')
+  }, [theme])
 
   return (
     <>
-      <ThemeProvider enableSystem={false} attribute='class'>
+      <ThemeProvider defaultTheme='dark' disableTransitionOnChange enableSystem={false} attribute='class'>
         <Theme scaling={'110%'}>
           <div className='touch-auto overflow-hidden' ref={ref}>
             <Flex width='100%'>
