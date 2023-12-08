@@ -11,7 +11,7 @@ const TransformNavigation = () => {
         </Text>
       </NavigationMenu.Item>
       <NavigationMenu.Item>
-        <NavigationLink href='/transform/coordinate-system' text='Coordiante System' />
+        <NavigationLink href='/transform/coordinate-system' text='Coordinate System' />
       </NavigationMenu.Item>
     </>
   )
