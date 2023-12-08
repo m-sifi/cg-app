@@ -10,12 +10,16 @@ import { TransformNavigation } from './navigation/TransformNavigation'
 import { LightingNavigation } from './navigation/LightingNavigation'
 import { Logo } from './navigation/Logo'
 import { ThemeToggle } from './navigation/ThemeToggle'
+import { NavigationLink } from './navigation/common/NavigationLink'
 
 const Navigation = () => {
   return (
     <NavigationMenu.Root className='z-50 bg-neutral-900 outline outline-1 outline-neutral-600'>
       <NavigationMenu.List className='flex h-screen w-80 flex-col gap-3 p-4'>
         <Logo />
+        <NavigationMenu.Item>
+          <NavigationLink href='/' text='About' />
+        </NavigationMenu.Item>
         {/* <SearchBar /> */}
         {/* <VectorNavigation /> */}
         <MatrixNavigation />
